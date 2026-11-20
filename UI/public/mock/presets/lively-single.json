@@ -1,0 +1,282 @@
+{
+ "results": [
+  {
+   "zip": "33142",
+   "neighborhood": "Allapattah",
+   "rank": 1,
+   "score": 84.3,
+   "centroid": [
+    25.80774,
+    -80.25034
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (studio)",
+     "value": 1620,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 10.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "partial",
+     "contribution": 11.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 1.8
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 251,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 30.3
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 30.3
+    }
+   ],
+   "reason": "Allapattah keeps you about $1,180 under your $2,800 budget and scores well on transit stops and walkability. It is a reasonable fit for the very lively vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33157",
+   "neighborhood": "Palmetto Bay",
+   "rank": 2,
+   "score": 80.8,
+   "centroid": [
+    25.60841,
+    -80.34475
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (studio)",
+     "value": 1760,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 11.4
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 13.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 1.8
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 199,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 24.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 30.3
+    }
+   ],
+   "reason": "Palmetto Bay keeps you about $1,040 under your $2,800 budget and scores well on noise level and transit stops. It is a reasonable fit for the very lively vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33134",
+   "neighborhood": "Coral Gables",
+   "rank": 3,
+   "score": 78.1,
+   "centroid": [
+    25.75468,
+    -80.27114
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (studio)",
+     "value": 2180,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 14.2
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "partial",
+     "contribution": 7.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 1.8
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 203,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 24.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 30.3
+    }
+   ],
+   "reason": "Coral Gables keeps you about $620 under your $2,800 budget and scores well on transit stops and walkability. It is a reasonable fit for the very lively vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33147",
+   "neighborhood": "West Little River",
+   "rank": 4,
+   "score": 78.1,
+   "centroid": [
+    25.85246,
+    -80.23865
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (studio)",
+     "value": 1710,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 11.1
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "partial",
+     "contribution": 9.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 1.8
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 214,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 25.8
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 30.3
+    }
+   ],
+   "reason": "West Little River keeps you about $1,090 under your $2,800 budget and scores well on transit stops and walkability. It is a reasonable fit for the very lively vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33012",
+   "neighborhood": "Hialeah",
+   "rank": 5,
+   "score": 76.1,
+   "centroid": [
+    25.86588,
+    -80.30292
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (studio)",
+     "value": 1910,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 12.4
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 13.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 1.8
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 149,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 18.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 30.3
+    }
+   ],
+   "reason": "Hialeah keeps you about $890 under your $2,800 budget and scores well on noise level and walkability. It is a reasonable fit for the very lively vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  }
+ ],
+ "appliedFilters": {
+  "budgetMax": 2800,
+  "housingType": "apartment",
+  "bedrooms": 0,
+  "petFriendly": false,
+  "vibe": 5,
+  "weights": {
+   "safety": 2,
+   "transit": 5,
+   "schools": 0,
+   "amenities": 5
+  },
+  "topN": 5
+ },
+ "meta": {
+  "zipsScored": 80,
+  "matched": 72
+ }
+}

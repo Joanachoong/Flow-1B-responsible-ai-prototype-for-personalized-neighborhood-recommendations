@@ -1,0 +1,282 @@
+{
+ "results": [
+  {
+   "zip": "33166",
+   "neighborhood": "Doral",
+   "rank": 1,
+   "score": 87.6,
+   "centroid": [
+    25.83586,
+    -80.3238
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (3BR)",
+     "value": 3390,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 25.3
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 25.4
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 119,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 8.2
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 26.1
+    }
+   ],
+   "reason": "Doral keeps you about $110 under your $3,500 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33056",
+   "neighborhood": "Miami Gardens",
+   "rank": 2,
+   "score": 84.7,
+   "centroid": [
+    25.94873,
+    -80.24597
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (3BR)",
+     "value": 3120,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 23.3
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 22.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 150,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 10.4
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 26.1
+    }
+   ],
+   "reason": "Miami Gardens keeps you about $380 under your $3,500 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33147",
+   "neighborhood": "West Little River",
+   "rank": 3,
+   "score": 84.6,
+   "centroid": [
+    25.85246,
+    -80.23865
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (3BR)",
+     "value": 2880,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 21.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 19.7
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 214,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 14.8
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 26.1
+    }
+   ],
+   "reason": "West Little River keeps you about $620 under your $3,500 budget and scores well on noise level and transit stops. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33145",
+   "neighborhood": "Coral Way",
+   "rank": 4,
+   "score": 84.2,
+   "centroid": [
+    25.7523,
+    -80.23443
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (3BR)",
+     "value": 3420,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 25.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 24.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 79,
+     "unit": "stops",
+     "match": "no",
+     "contribution": 5.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 26.1
+    }
+   ],
+   "reason": "Coral Way keeps you about $80 under your $3,500 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33144",
+   "neighborhood": "West Miami",
+   "rank": 5,
+   "score": 83.9,
+   "centroid": [
+    25.76431,
+    -80.31206
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (3BR)",
+     "value": 3210,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 23.9
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 25.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 86,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 6.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 26.1
+    }
+   ],
+   "reason": "West Miami keeps you about $290 under your $3,500 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  }
+ ],
+ "appliedFilters": {
+  "budgetMax": 3500,
+  "housingType": "house",
+  "bedrooms": 3,
+  "petFriendly": false,
+  "vibe": 2,
+  "weights": {
+   "safety": 5,
+   "transit": 2,
+   "schools": 5,
+   "amenities": 3
+  },
+  "topN": 5
+ },
+ "meta": {
+  "zipsScored": 80,
+  "matched": 44
+ }
+}

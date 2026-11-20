@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* Palette sampled from flow.life: warm cream ground, charcoal ink, sand lines, muted earthy accents. */
+@theme {
+  --color-cream: #f3eddf;
+  --color-cream-2: #f7f3ea;
+  --color-paper: #fefcfb;
+  --color-sand: #ddd8cb;
+  --color-sand-2: #ded5c1;
+  --color-ink: #3d3d3d;
+  --color-ink-2: #1a1a1a;
+  --color-muted: #66645e;
+  --color-faint: #86827b;
+  --color-sage: #71845c;
+  --color-teal: #3f7e70;
+  --color-clay: #a75f48;
+  --color-ochre: #a77a24;
+  --color-rose: #ad647b;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), Georgia, "Times New Roman", serif;
+}
+
+html,
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Range inputs in the brand colours */
+input[type="range"] {
+  accent-color: var(--color-ink);
+}
+
+/* Leaflet tweaks: soft tooltips and rank badges */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-cream-2);
+}
+.warm-tiles {
+  filter: grayscale(1) sepia(0.18) brightness(1.06) contrast(0.88);
+}
+.leaflet-tooltip.zip-tooltip {
+  background: var(--color-paper);
+  border: 1px solid var(--color-sand);
+  border-radius: 8px;
+  color: var(--color-ink);
+  box-shadow: 0 4px 14px rgba(61, 61, 61, 0.12);
+  padding: 6px 10px;
+}
+.rank-badge {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  font-size: 13px;
+  border: 2px solid var(--color-paper);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.rank-badge.is-selected {
+  background: var(--color-clay);
+  transform: scale(1.15);
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+.typing-dot {
+  animation: blink 1.2s infinite ease-in-out;
+}
