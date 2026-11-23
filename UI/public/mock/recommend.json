@@ -1,0 +1,1582 @@
+{
+ "results": [
+  {
+   "zip": "33142",
+   "neighborhood": "Allapattah",
+   "rank": 1,
+   "score": 78.5,
+   "centroid": [
+    25.80774,
+    -80.25034
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1760,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.0
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 21.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 251,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 24.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Allapattah has a median rent of $1,760 and scores well on noise level and transit stops. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33147",
+   "neighborhood": "West Little River",
+   "rank": 2,
+   "score": 78.2,
+   "centroid": [
+    25.85246,
+    -80.23865
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1860,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.4
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.9
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 214,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 20.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "West Little River has a median rent of $1,860 and scores well on noise level and transit stops. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33134",
+   "neighborhood": "Coral Gables",
+   "rank": 3,
+   "score": 76.9,
+   "centroid": [
+    25.75468,
+    -80.27114
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2370,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 9.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 21.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 203,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 19.4
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Coral Gables has a median rent of $2,370 and scores well on noise level and transit stops. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33160",
+   "neighborhood": "Sunny Isles Beach",
+   "rank": 4,
+   "score": 75.0,
+   "centroid": [
+    25.93708,
+    -80.14016
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2710,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 10.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 22.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 158,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 15.1
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Sunny Isles Beach has a median rent of $2,710 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33161",
+   "neighborhood": "North Miami",
+   "rank": 5,
+   "score": 73.5,
+   "centroid": [
+    25.89392,
+    -80.18246
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2030,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.1
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 22.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 171,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 16.4
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "North Miami has a median rent of $2,030 and scores well on noise level and transit stops. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33176",
+   "neighborhood": "Kendall",
+   "rank": 6,
+   "score": 72.3,
+   "centroid": [
+    25.66144,
+    -80.35922
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2170,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.7
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 22.7
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 152,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 14.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Kendall has a median rent of $2,170 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33127",
+   "neighborhood": "Wynwood",
+   "rank": 7,
+   "score": 72.1,
+   "centroid": [
+    25.81371,
+    -80.20565
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1700,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 6.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 24.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 156,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 14.9
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Wynwood has a median rent of $1,700 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33139",
+   "neighborhood": "South Beach",
+   "rank": 8,
+   "score": 72.1,
+   "centroid": [
+    25.78479,
+    -80.15173
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2950,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 11.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.4
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 109,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 10.4
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "South Beach has a median rent of $2,950 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33178",
+   "neighborhood": "Doral",
+   "rank": 9,
+   "score": 72.0,
+   "centroid": [
+    25.8543,
+    -80.40773
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 3120,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 12.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 19.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 141,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 13.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Doral has a median rent of $3,120 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33157",
+   "neighborhood": "Palmetto Bay",
+   "rank": 10,
+   "score": 71.6,
+   "centroid": [
+    25.60841,
+    -80.34475
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1910,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.6
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 18.5
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 199,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 19.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Palmetto Bay has a median rent of $1,910 and scores well on noise level and transit stops. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33010",
+   "neighborhood": "Hialeah",
+   "rank": 11,
+   "score": 71.5,
+   "centroid": [
+    25.83209,
+    -80.27633
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1870,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 22.7
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 157,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 15.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Hialeah has a median rent of $1,870 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33126",
+   "neighborhood": "Flagami",
+   "rank": 12,
+   "score": 71.5,
+   "centroid": [
+    25.78253,
+    -80.29624
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2230,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.9
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.8
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 129,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 12.3
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Flagami has a median rent of $2,230 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33138",
+   "neighborhood": "Upper Eastside",
+   "rank": 13,
+   "score": 71.3,
+   "centroid": [
+    25.8544,
+    -80.17924
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1900,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.6
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 24.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 139,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 13.3
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Upper Eastside has a median rent of $1,900 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33162",
+   "neighborhood": "North Miami Beach",
+   "rank": 14,
+   "score": 71.3,
+   "centroid": [
+    25.92885,
+    -80.17802
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1870,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.8
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 143,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 13.7
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "North Miami Beach has a median rent of $1,870 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33137",
+   "neighborhood": "Edgewater",
+   "rank": 15,
+   "score": 70.8,
+   "centroid": [
+    25.81495,
+    -80.17749
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2860,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 11.4
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.7
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 96,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 9.2
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Edgewater has a median rent of $2,860 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33056",
+   "neighborhood": "Miami Gardens",
+   "rank": 16,
+   "score": 70.3,
+   "centroid": [
+    25.94873,
+    -80.24597
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2020,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.1
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 21.4
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 150,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 14.3
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Miami Gardens has a median rent of $2,020 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33179",
+   "neighborhood": "Ives Estates",
+   "rank": 17,
+   "score": 69.9,
+   "centroid": [
+    25.95644,
+    -80.17962
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2280,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 9.1
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.8
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 111,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 10.6
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Ives Estates has a median rent of $2,280 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33172",
+   "neighborhood": "Doral",
+   "rank": 18,
+   "score": 69.8,
+   "centroid": [
+    25.78869,
+    -80.36141
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2440,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 9.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 22.2
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 120,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 11.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Doral has a median rent of $2,440 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33125",
+   "neighborhood": "Little Havana",
+   "rank": 19,
+   "score": 69.7,
+   "centroid": [
+    25.78329,
+    -80.23522
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2040,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.2
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 22.1
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 136,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 13.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Little Havana has a median rent of $2,040 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33169",
+   "neighborhood": "Miami Gardens",
+   "rank": 20,
+   "score": 69.7,
+   "centroid": [
+    25.93927,
+    -80.21528
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1890,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 7.6
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 22.7
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 137,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 13.1
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Miami Gardens has a median rent of $1,890 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33165",
+   "neighborhood": "Westchester",
+   "rank": 21,
+   "score": 69.6,
+   "centroid": [
+    25.73397,
+    -80.35959
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2190,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 22.8
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 121,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 11.6
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Westchester has a median rent of $2,190 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33155",
+   "neighborhood": "Coral Terrace",
+   "rank": 22,
+   "score": 69.4,
+   "centroid": [
+    25.73539,
+    -80.31119
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2290,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 9.2
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.1
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 113,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 10.8
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Coral Terrace has a median rent of $2,290 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33132",
+   "neighborhood": "Downtown Miami",
+   "rank": 23,
+   "score": 69.1,
+   "centroid": [
+    25.7807,
+    -80.18254
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 3190,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 12.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 72,
+     "unit": "stops",
+     "match": "no",
+     "contribution": 6.9
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Downtown Miami has a median rent of $3,190 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33133",
+   "neighborhood": "Coconut Grove",
+   "rank": 24,
+   "score": 69.0,
+   "centroid": [
+    25.72582,
+    -80.25034
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2610,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 10.4
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 20.7
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 120,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 11.5
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Coconut Grove has a median rent of $2,610 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33180",
+   "neighborhood": "Aventura",
+   "rank": 25,
+   "score": 68.8,
+   "centroid": [
+    25.96066,
+    -80.14093
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 3140,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 12.6
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 20.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 100,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 9.6
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Aventura has a median rent of $3,140 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33175",
+   "neighborhood": "Tamiami",
+   "rank": 26,
+   "score": 68.0,
+   "centroid": [
+    25.73818,
+    -80.40777
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2330,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 9.3
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 23.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 94,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 9.0
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Tamiami has a median rent of $2,330 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33054",
+   "neighborhood": "Opa-locka",
+   "rank": 27,
+   "score": 67.5,
+   "centroid": [
+    25.90522,
+    -80.25998
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1730,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 6.9
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 20.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 148,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 14.2
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Opa-locka has a median rent of $1,730 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33136",
+   "neighborhood": "Overtown",
+   "rank": 28,
+   "score": 67.1,
+   "centroid": [
+    25.78672,
+    -80.2045
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1710,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 6.8
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 23.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 113,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 10.8
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Overtown has a median rent of $1,710 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33177",
+   "neighborhood": "Richmond West",
+   "rank": 29,
+   "score": 67.1,
+   "centroid": [
+    25.59874,
+    -80.40538
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2510,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 10.0
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 21.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 95,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 9.1
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Richmond West has a median rent of $2,510 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33012",
+   "neighborhood": "Hialeah",
+   "rank": 30,
+   "score": 67.0,
+   "centroid": [
+    25.86588,
+    -80.30292
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 2080,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 8.3
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "yes",
+     "contribution": 18.0
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 2.4
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 149,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 14.2
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 24.0
+    }
+   ],
+   "reason": "Hialeah has a median rent of $2,080 and scores well on noise level and walkability. (Mock data \u2014 not from the live engine.)"
+  }
+ ],
+ "appliedFilters": {
+  "budgetMax": 6000,
+  "housingType": "any",
+  "bedrooms": 1,
+  "petFriendly": false,
+  "vibe": 3,
+  "weights": {
+   "safety": 3,
+   "transit": 3,
+   "schools": 1,
+   "amenities": 3
+  },
+  "topN": 5
+ },
+ "meta": {
+  "zipsScored": 80,
+  "matched": 80
+ }
+}

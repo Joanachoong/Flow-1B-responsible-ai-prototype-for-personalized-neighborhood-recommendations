@@ -61,7 +61,6 @@ outputs/
 
 # Large or license-restricted source downloads.
 # Keep reproducible, approved snapshots elsewhere under data/ when needed.
-data/raw/
 data/external/
 
 # IDE settings

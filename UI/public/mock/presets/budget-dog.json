@@ -1,0 +1,282 @@
+{
+ "results": [
+  {
+   "zip": "33147",
+   "neighborhood": "West Little River",
+   "rank": 1,
+   "score": 84.3,
+   "centroid": [
+    25.85246,
+    -80.23865
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1860,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 19.9
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 16.1
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 8.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 214,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 18.3
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 21.4
+    }
+   ],
+   "reason": "West Little River keeps you about $140 under your $2,000 budget and scores well on noise level and transit stops. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33142",
+   "neighborhood": "Allapattah",
+   "rank": 2,
+   "score": 83.7,
+   "centroid": [
+    25.80774,
+    -80.25034
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1760,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 18.9
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Medium",
+     "match": "partial",
+     "contribution": 13.4
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 8.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 251,
+     "unit": "stops",
+     "match": "yes",
+     "contribution": 21.4
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 21.4
+    }
+   ],
+   "reason": "Allapattah keeps you about $240 under your $2,000 budget and scores well on transit stops and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33054",
+   "neighborhood": "Opa-locka",
+   "rank": 3,
+   "score": 80.8,
+   "centroid": [
+    25.90522,
+    -80.25998
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1730,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 18.5
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 19.6
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 8.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 148,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 12.6
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 21.4
+    }
+   ],
+   "reason": "Opa-locka keeps you about $270 under your $2,000 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33010",
+   "neighborhood": "Hialeah",
+   "rank": 4,
+   "score": 80.7,
+   "centroid": [
+    25.83209,
+    -80.27633
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1870,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 20.0
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 17.3
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 8.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 157,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 13.4
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 21.4
+    }
+   ],
+   "reason": "Hialeah keeps you about $130 under your $2,000 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  },
+  {
+   "zip": "33167",
+   "neighborhood": "Golden Glades",
+   "rank": 5,
+   "score": 79.4,
+   "centroid": [
+    25.89219,
+    -80.23125
+   ],
+   "features": [
+    {
+     "key": "median_rent",
+     "label": "Median rent (1BR)",
+     "value": 1800,
+     "unit": "$/mo",
+     "match": "yes",
+     "contribution": 19.3
+    },
+    {
+     "key": "noise_level",
+     "label": "Noise level",
+     "value": "Low",
+     "match": "yes",
+     "contribution": 21.2
+    },
+    {
+     "key": "pet_friendly",
+     "label": "Pet-friendly score",
+     "value": 60,
+     "unit": "%",
+     "match": "partial",
+     "contribution": 8.6
+    },
+    {
+     "key": "transit_stops",
+     "label": "Transit stops",
+     "value": 104,
+     "unit": "stops",
+     "match": "partial",
+     "contribution": 8.9
+    },
+    {
+     "key": "walkable",
+     "label": "Walkability",
+     "value": 100,
+     "unit": "%",
+     "match": "yes",
+     "contribution": 21.4
+    }
+   ],
+   "reason": "Golden Glades keeps you about $200 under your $2,000 budget and scores well on noise level and walkability. It is a reasonable fit for the quiet vibe you asked for. (Mock data \u2014 not from the live engine.)"
+  }
+ ],
+ "appliedFilters": {
+  "budgetMax": 2000,
+  "housingType": "apartment",
+  "bedrooms": 1,
+  "petFriendly": true,
+  "vibe": 2,
+  "weights": {
+   "safety": 3,
+   "transit": 3,
+   "schools": 1,
+   "amenities": 3
+  },
+  "topN": 5
+ },
+ "meta": {
+  "zipsScored": 80,
+  "matched": 22
+ }
+}
