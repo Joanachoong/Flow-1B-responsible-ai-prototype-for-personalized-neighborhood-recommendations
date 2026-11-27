@@ -1,17 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { USE_MOCK } from "@/lib/api";
+import { DEFAULT_PREFS, loadSurvey, RETAKE_QUIZ_EVENT, startSurvey } from "@/lib/prefs";
 
 const TABS = [
   { href: "/", label: "Map" },
   { href: "/chat", label: "Chatbot" },
 ];
 
-// NAV-1: project name + two tabs, active tab highlighted.
+// NAV-1: project name + two tabs, active tab highlighted, plus "Retake quiz".
 export default function TopNav() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  // The quiz lives on the Map page: open it there; from other pages, queue it and go to the map.
+  const retakeQuiz = () => {
+    if (pathname === "/") {
+      window.dispatchEvent(new Event(RETAKE_QUIZ_EVENT));
+    } else {
+      startSurvey(loadSurvey() ?? DEFAULT_PREFS);
+      router.push("/");
+    }
+  };
   return (
     <header className="sticky top-0 z-[1000] border-b border-sand bg-cream/95 backdrop-blur">
       <nav className="mx-auto flex h-14 items-center gap-4 px-4 md:px-6">
@@ -39,6 +51,18 @@ export default function TopNav() {
             );
           })}
         </div>
+        <button
+          type="button"
+          onClick={retakeQuiz}
+          title="Answer the quick quiz again to update your recommendations"
+          className="flex items-center gap-1.5 rounded-full border border-sand bg-paper px-3 py-1.5 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+            <path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v2.8h-2.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className="hidden sm:inline">Retake quiz</span>
+          <span className="sm:hidden">Quiz</span>
+        </button>
         {USE_MOCK && (
           <span
             title="NEXT_PUBLIC_USE_MOCK=true — showing sample data, not the live engine"

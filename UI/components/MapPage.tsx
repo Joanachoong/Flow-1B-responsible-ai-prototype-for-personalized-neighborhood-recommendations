@@ -6,14 +6,19 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ApiError, recommend, zipDetails } from "@/lib/api";
 import type { Preset } from "@/lib/presets";
 import {
+  clearSurveyProgress,
   DEFAULT_PREFS,
   describePrefs,
   isSurveyDone,
   loadSurvey,
+  loadSurveyProgress,
   markSurveyDone,
   prefsFromSearchParams,
   prefsToSearchParams,
+  RETAKE_QUIZ_EVENT,
   saveSurvey,
+  startSurvey,
+  type SurveyProgress,
 } from "@/lib/prefs";
 import { makeScoreScale } from "@/lib/score";
 import type { Preferences, RecommendResponse, ZipResult } from "@/lib/types";
@@ -62,7 +67,10 @@ export default function MapPage() {
   const [error, setError] = useState("");
   const [selectedZip, setSelectedZip] = useState<string | null>(null);
   const [detail, setDetail] = useState<Detail>({ result: null, loading: false, error: null });
-  const [showSurvey, setShowSurvey] = useState(false);
+  // null = quiz closed; otherwise where the quiz opens (resumed after a refresh, or step 1).
+  const [survey, setSurvey] = useState<SurveyProgress | null>(null);
+  // False until the first-load check has run, so a refresh mid-quiz never flashes the map.
+  const [checked, setChecked] = useState(false);
 
   const requestId = useRef(0);
   const detailRequestId = useRef(0);
@@ -127,19 +135,45 @@ export default function MapPage() {
     }
   }, []);
 
-  // First load: URL filters (from "View on map") win; otherwise maybe show the survey.
+  // First load: an unfinished quiz always comes first (a refresh resumes it where the user
+  // stopped); then URL filters (from "View on map"); otherwise maybe show the quiz.
   useEffect(() => {
+    const inProgress = loadSurveyProgress();
     const fromUrl = prefsFromSearchParams(new URLSearchParams(searchParams.toString()));
-    if (fromUrl) {
+    if (inProgress) {
+      setPrefs(fromUrl ?? loadSurvey() ?? inProgress.prefs);
+      setSurvey(inProgress);
+    } else if (fromUrl) {
       setPrefs(fromUrl);
       apply(fromUrl, { zip: searchParams.get("zip") ?? undefined });
-      return;
+    } else {
+      const saved = loadSurvey();
+      if (saved) setPrefs(saved);
+      if (!isSurveyDone()) openSurvey(saved ?? DEFAULT_PREFS);
     }
-    const saved = loadSurvey();
-    if (saved) setPrefs(saved);
-    if (!isSurveyDone()) setShowSurvey(true);
+    setChecked(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const openSurvey = useCallback((from: Preferences) => {
+    startSurvey(from);
+    setSurvey(loadSurveyProgress() ?? { step: 0, prefs: from, pet: from.petFriendly ? "dog" : "none" });
+  }, []);
+
+  // "Retake quiz" in the top bar (works from any page; see TopNav).
+  const prefsRef = useRef(prefs);
+  prefsRef.current = prefs;
+  useEffect(() => {
+    const onRetake = () => openSurvey(prefsRef.current);
+    window.addEventListener(RETAKE_QUIZ_EVENT, onRetake);
+    return () => window.removeEventListener(RETAKE_QUIZ_EVENT, onRetake);
+  }, [openSurvey]);
+
+  const closeSurvey = () => {
+    clearSurveyProgress();
+    markSurveyDone();
+    setSurvey(null);
+  };
 
   const select = (zip: string) => {
     setSelectedZip(zip);
@@ -169,8 +203,7 @@ export default function MapPage() {
 
   const finishSurvey = (p: Preferences) => {
     saveSurvey(p);
-    markSurveyDone();
-    setShowSurvey(false);
+    closeSurvey();
     setPrefs(p);
     apply(p);
   };
@@ -178,17 +211,17 @@ export default function MapPage() {
   return (
     // Desktop: exactly the viewport under the nav, so the panel scrolls and the map never grows.
     <div className="flex min-h-0 flex-1 flex-col md:h-[calc(100dvh-3.5rem)] md:flex-none md:flex-row">
-      {showSurvey && (
+      {!checked && <div aria-hidden className="fixed inset-0 z-[2000] bg-cream" />}
+      {survey && (
         <OnboardingSurvey
-          initial={prefs}
+          initial={survey.prefs}
+          initialStep={survey.step}
+          initialPet={survey.pet}
           onComplete={finishSurvey}
-          onSkip={() => {
-            markSurveyDone();
-            setShowSurvey(false);
-          }}
+          onSkip={closeSurvey}
           onContinueInChat={(p) => {
             saveSurvey(p);
-            markSurveyDone();
+            closeSurvey();
             router.push("/chat");
           }}
         />
@@ -200,7 +233,7 @@ export default function MapPage() {
           <h1 className="font-display text-2xl leading-tight text-ink">Where in Miami fits you?</h1>
           <p className="mt-1 text-sm text-muted">
             Set what matters, press Apply, and we&apos;ll map your five best zip codes — with the reasons.{" "}
-            <button type="button" onClick={() => setShowSurvey(true)} className="underline underline-offset-2 hover:text-ink">
+            <button type="button" onClick={() => openSurvey(prefs)} className="underline underline-offset-2 hover:text-ink">
               Retake the quick quiz
             </button>
           </p>

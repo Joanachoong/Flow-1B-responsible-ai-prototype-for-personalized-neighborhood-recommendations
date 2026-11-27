@@ -131,6 +131,53 @@ export function isSurveyDone(): boolean {
   }
 }
 
+// ---- in-progress quiz (survives a page refresh until the quiz is finished or skipped) ----
+
+const PROGRESS_KEY = "mzr.surveyProgress.v1";
+export const RETAKE_QUIZ_EVENT = "mzr:retake-quiz";
+
+export type SurveyPet = "none" | "cat" | "dog";
+
+export interface SurveyProgress {
+  step: number;
+  prefs: Preferences;
+  pet: SurveyPet;
+}
+
+export function saveSurveyProgress(progress: SurveyProgress) {
+  try {
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+  } catch {
+    /* storage unavailable: a refresh restarts the quiz */
+  }
+}
+
+export function loadSurveyProgress(): SurveyProgress | null {
+  try {
+    const raw = localStorage.getItem(PROGRESS_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw) as Partial<SurveyProgress>;
+    const step = Number.isInteger(data.step) && (data.step as number) >= 0 ? (data.step as number) : 0;
+    const pet: SurveyPet = data.pet === "cat" || data.pet === "dog" ? data.pet : "none";
+    return { step, pet, prefs: completePrefs(data.prefs) };
+  } catch {
+    return null;
+  }
+}
+
+export function clearSurveyProgress() {
+  try {
+    localStorage.removeItem(PROGRESS_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+/** Open the quiz from step 1, starting from the given answers (used by "Retake quiz"). */
+export function startSurvey(prefs: Preferences) {
+  saveSurveyProgress({ step: 0, prefs, pet: prefs.petFriendly ? "dog" : "none" });
+}
+
 /** Short human-readable chips, e.g. "Budget ≤ $2,000 · Pet-friendly · Quiet". */
 export function describePrefs(p: Partial<Preferences>): string[] {
   const chips: string[] = [];

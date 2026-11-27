@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { VIBE_LABELS } from "@/lib/prefs";
+import { useEffect, useState } from "react";
+import { saveSurveyProgress, VIBE_LABELS, type SurveyPet } from "@/lib/prefs";
 import type { Bedrooms, HousingType, Preferences, Vibe } from "@/lib/types";
 import Illustration, { type IllustrationName } from "./Illustrations";
 
 interface Props {
   initial: Preferences;
+  /** Where to resume after a page refresh (defaults: first step, pet from `initial`). */
+  initialStep?: number;
+  initialPet?: SurveyPet;
   onComplete: (p: Preferences) => void;
   onSkip: () => void;
   onContinueInChat: (p: Preferences) => void;
@@ -71,10 +74,10 @@ function StepSlider({ labels, index, onChange, ariaLabel }: { labels: string[]; 
 }
 
 // Flow 1 onboarding: full-screen, quick, skippable; answers prefill the Map filters.
-export default function OnboardingSurvey({ initial, onComplete, onSkip, onContinueInChat }: Props) {
+export default function OnboardingSurvey({ initial, initialStep = 0, initialPet, onComplete, onSkip, onContinueInChat }: Props) {
   const [p, setP] = useState<Preferences>({ ...initial, householdSize: initial.householdSize ?? 1, bathrooms: initial.bathrooms ?? 1 });
-  const [step, setStep] = useState(0);
-  const [pet, setPet] = useState<"none" | "cat" | "dog">(initial.petFriendly ? "dog" : "none");
+  const [step, setStep] = useState(initialStep);
+  const [pet, setPet] = useState<SurveyPet>(initialPet ?? (initial.petFriendly ? "dog" : "none"));
   const update = (patch: Partial<Preferences>) => setP((prev) => ({ ...prev, ...patch }));
   const pickAndNext = (patch: Partial<Preferences>) => {
     update(patch);
@@ -191,8 +194,13 @@ export default function OnboardingSurvey({ initial, onComplete, onSkip, onContin
     },
   ];
 
-  const last = step === steps.length - 1;
-  const current = steps[step];
+  // Remember the step and answers so a refresh brings the user back here (cleared by the parent
+  // when the quiz is finished, skipped, or continued in chat).
+  useEffect(() => saveSurveyProgress({ step, prefs: p, pet }), [step, p, pet]);
+
+  if (step > steps.length - 1) setStep(steps.length - 1); // stale saved step
+  const last = step >= steps.length - 1;
+  const current = steps[Math.min(step, steps.length - 1)];
 
   return (
     <div role="dialog" aria-modal="true" aria-labelledby="survey-title" className="fixed inset-0 z-[2000] flex flex-col overflow-y-auto bg-cream">

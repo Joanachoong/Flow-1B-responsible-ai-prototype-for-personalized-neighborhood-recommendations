@@ -1,11 +1,10 @@
 """Thin Python backend (Vercel Python function).
 
-Browser -> /api/py/* -> this file -> MCP tools (score_zips, get_zip_details, explain_fit).
-It validates input, forwards calls to the MCP server, and shapes the response.
-It contains NO scoring logic: ranking lives in the MCP server.
+Browser -> /api/py/* -> this file -> MCP server in ../src (tools: recommend, area_stats).
+It validates input, forwards calls to the MCP server, and renames fields for the UI
+(_lib/engine_adapter.py). It contains NO scoring logic: ranking lives in the MCP server.
 """
 
-import asyncio
 import os
 import sys
 from pathlib import Path
@@ -17,7 +16,7 @@ from fastapi import FastAPI, Request  # noqa: E402
 from fastapi.exceptions import RequestValidationError  # noqa: E402
 from fastapi.responses import JSONResponse  # noqa: E402
 
-from _lib import mcp_client  # noqa: E402
+from _lib import engine_adapter, mcp_client  # noqa: E402
 from _lib.chat_agent import extract_preferences, summarize  # noqa: E402
 from _lib.models import (  # noqa: E402
     ChatRequest,
@@ -29,8 +28,6 @@ from _lib.models import (  # noqa: E402
     ZipResult,
 )
 from _lib.reasons import template_reason  # noqa: E402
-
-EXPLAIN_TIMEOUT_S = 4.0  # PRD: if explain_fit takes over 4 s, use template reasons
 
 app = FastAPI(title="Miami Zip Recommender API", docs_url="/api/py/docs", openapi_url="/api/py/openapi.json")
 
@@ -66,52 +63,16 @@ async def _tool(name: str, arguments: dict[str, Any], timeout: float = mcp_clien
         raise EngineUnavailable(f"Recommendation engine unavailable: {exc}", 503) from exc
 
 
-def _normalize_scored(payload: Any) -> tuple[list[ZipResult], Meta]:
-    """score_zips may return a bare list of ZipResult or {results, meta}."""
-    if isinstance(payload, dict):
-        raw, meta = payload.get("results", []), Meta.model_validate(payload.get("meta") or {})
-    elif isinstance(payload, list):
-        raw, meta = payload, Meta()
-    else:
-        raise EngineUnavailable("Recommendation engine returned an unexpected response.", 500)
-    results = [ZipResult.model_validate(item) for item in raw]
-    for index, result in enumerate(results, start=1):
-        result.rank = result.rank or index
-    if not meta.matched:
-        meta.matched = len(results)
-    return results, meta
-
-
-async def _explain(result: ZipResult, prefs: Preferences) -> str:
-    try:
-        reason = await mcp_client.call_tool(
-            mcp_client.EXPLAIN_FIT,
-            {
-                "zip": result.zip,
-                "preferences": prefs.model_dump(exclude_none=True),
-                "features": [f.model_dump() for f in result.features],
-            },
-            timeout=EXPLAIN_TIMEOUT_S,
-        )
-        if isinstance(reason, dict):
-            reason = reason.get("reason", "")
-        return str(reason).strip() or template_reason(result, prefs)
-    except Exception:
-        return template_reason(result, prefs)
-
-
-async def _fill_reasons(results: list[ZipResult], prefs: Preferences) -> None:
-    missing = [r for r in results if not r.reason.strip()]
-    reasons = await asyncio.gather(*(_explain(r, prefs) for r in missing))
-    for result, reason in zip(missing, reasons):
-        result.reason = reason
-
-
 async def _score(prefs: Preferences) -> tuple[list[ZipResult], Meta]:
-    payload = await _tool(mcp_client.SCORE_ZIPS, {"preferences": prefs.model_dump(exclude_none=True)})
-    results, meta = _normalize_scored(payload)
-    results = results[: prefs.topN]
-    await _fill_reasons(results, prefs)
+    """Ranking comes from the engine's `recommend` tool, unchanged."""
+    payload = await _tool(mcp_client.RECOMMEND, engine_adapter.to_recommend_args(prefs))
+    try:
+        results, meta = engine_adapter.from_recommendation(payload)
+    except (ValueError, KeyError, TypeError) as exc:
+        raise EngineUnavailable("Recommendation engine returned an unexpected response.", 500) from exc
+    for result in results:
+        # The engine has no explanation tool; build the sentence from the values it returned.
+        result.reason = template_reason(result, prefs)
     return results, meta
 
 
@@ -132,16 +93,15 @@ async def recommend(prefs: Preferences) -> RecommendResponse:
 
 @app.post("/api/py/zip-details", response_model=ZipResult)
 async def zip_details(body: ZipDetailsRequest) -> ZipResult:
-    payload = await _tool(
-        mcp_client.GET_ZIP_DETAILS,
-        {"zip": body.zip, "preferences": body.preferences.model_dump(exclude_none=True)},
-    )
-    if isinstance(payload, dict) and "result" in payload and "zip" not in payload:
-        payload = payload["result"]
-    result = ZipResult.model_validate(payload)
-    if not result.reason.strip():
-        result.reason = await _explain(result, body.preferences)
-    return result
+    """The ZIP's entry in the engine's ranking if it is a top match, else its area_stats."""
+    results, _ = await _score(body.preferences)
+    for result in results:
+        if result.zip == body.zip:
+            return result
+    payload = await _tool(mcp_client.AREA_STATS, {"zip_code": body.zip})
+    if not isinstance(payload, dict) or payload.get("status") != "ok":
+        raise EngineUnavailable("No data for this zip in the engine's snapshot.", 404)
+    return engine_adapter.from_area_stats(payload)
 
 
 @app.post("/api/py/chat", response_model=ChatResponse)

@@ -19,45 +19,57 @@ from _lib.chat_agent import apply_rules  # noqa: E402
 from _lib.models import Preferences  # noqa: E402
 
 AREAS = [
-    {"zip": "33133", "neighborhood": "Coconut Grove", "rent": 2150, "quiet": 0.9},
-    {"zip": "33145", "neighborhood": "Silver Bluff", "rent": 1850, "quiet": 0.7},
-    {"zip": 33010, "neighborhood": "Hialeah", "rent": 1700, "quiet": 0.6},
+    {"zip": "33133", "area_name": "Coconut Grove", "rent": 2150, "quiet": 0.9},
+    {"zip": "33145", "area_name": "Silver Bluff", "rent": 1850, "quiet": 0.7},
+    {"zip": "33010", "area_name": "Hialeah", "rent": 1700, "quiet": 0.6},
 ]
 
 
-def fake_server(explain_ok: bool = True) -> MCPServer:
+def fake_server() -> MCPServer:
+    """Same tool names and response shapes as src/flow_neighborhoods/mcp_server.py."""
     server = MCPServer("fake-engine")
+    calls: list[dict] = []
+    server.calls = calls  # type: ignore[attr-defined]
 
     @server.tool()
-    def score_zips(preferences: dict) -> dict:
-        budget = preferences["budgetMax"]
-        fits = [a for a in AREAS if a["rent"] <= budget]
+    def recommend(budget_max: float, household: str, housing_preference: str, tags: list[str],
+                  k: int = 3, weights: dict | None = None, near: list[str] | None = None) -> dict:
+        calls.append({"budget_max": budget_max, "household": household, "tags": tags, "weights": weights, "k": k})
+        fits = [a for a in AREAS if a["rent"] <= budget_max][:k]
         return {
+            "status": "ok" if fits else "no_matches",
             "results": [
                 {
                     "zip": a["zip"],
-                    "neighborhood": a["neighborhood"],
-                    "score": 90 - i * 5,
-                    "centroid": [25.7, -80.2],
-                    "features": [
-                        {"key": "median_rent", "label": "Median rent", "value": a["rent"], "unit": "$/mo", "match": "yes", "contribution": 20},
-                        {"key": "quiet", "label": "Quiet", "value": a["quiet"], "match": "yes", "contribution": 15},
+                    "area_name": a["area_name"],
+                    "neighborhood": a["area_name"],
+                    "rank": i + 1,
+                    "score": 0.9 - i * 0.05,
+                    "rent_usd": a["rent"],
+                    "matched_preferences": [
+                        {"tag": "quiet", "priority": 2, "feature_value": a["quiet"], "contribution": 0.4}
                     ],
+                    "transit_service": {"transit_stops": 40.0},
                 }
                 for i, a in enumerate(fits)
             ],
-            "meta": {"zipsScored": len(AREAS), "matched": len(fits)},
+            "eligible_count": len([a for a in AREAS if a["rent"] <= budget_max]),
+            "excluded_counts": {"over_budget": len([a for a in AREAS if a["rent"] > budget_max])},
         }
 
     @server.tool()
-    def explain_fit(zip: str, preferences: dict, features: list) -> str:
-        if not explain_ok:
-            raise ValueError("LLM down")
-        return f"{zip} fits you."
-
-    @server.tool()
-    def get_zip_details(zip: str, preferences: dict) -> dict:
-        return {"zip": zip, "neighborhood": "Somewhere", "score": 50, "features": []}
+    def area_stats(zip_code: str = "") -> dict:
+        area = next((a for a in AREAS if a["zip"] == zip_code), None)
+        if area is None:
+            return {"zip": zip_code, "status": "unknown_area"}
+        return {
+            "zip": zip_code,
+            "status": "ok",
+            "area_name": area["area_name"],
+            "public_stats": {"median_rent_usd": area["rent"], "population": 1000.0},
+            "lifestyle_scores": {"quiet": area["quiet"], "pet_friendly": 0.6},
+            "constant_scores": ["pet_friendly"],
+        }
 
     return server
 
@@ -72,10 +84,12 @@ def client(monkeypatch):
 
 def test_health(client):
     body = client.get("/api/py/health").json()
-    assert body == {"status": "ok", "mcpConfigured": False, "llmConfigured": False}
+    # The repo's src/ MCP server is found automatically, so the engine counts as configured.
+    assert body == {"status": "ok", "mcpConfigured": True, "llmConfigured": False}
 
 
-def test_recommend_without_mcp_is_503(client):  # AT-5
+def test_recommend_without_mcp_is_503(client, monkeypatch):  # AT-5
+    monkeypatch.setattr(mcp_client, "_local_server_available", lambda: False)
     response = client.post("/api/py/recommend", json={"budgetMax": 2000})
     assert response.status_code == 503
     assert "not connected" in response.json()["error"]
@@ -89,15 +103,20 @@ def test_bad_input_is_400(client):
 
 
 def test_recommend_through_mcp(client, monkeypatch):
-    monkeypatch.setattr(mcp_client, "_server_override", fake_server())
+    server = fake_server()
+    monkeypatch.setattr(mcp_client, "_server_override", server)
     response = client.post("/api/py/recommend", json={"budgetMax": 2000, "petFriendly": True, "vibe": 2})
     assert response.status_code == 200
     body = response.json()
-    assert [r["zip"] for r in body["results"]] == ["33145", "33010"]  # zip normalized to 5 chars
+    assert [r["zip"] for r in body["results"]] == ["33145", "33010"]  # engine order, unchanged
     assert [r["rank"] for r in body["results"]] == [1, 2]
-    assert body["results"][0]["reason"] == "33145 fits you."
+    assert [r["score"] for r in body["results"]] == [90.0, 85.0]  # engine 0-1 score shown as /100
+    assert body["results"][0]["reason"].startswith("Silver Bluff ranks #1")
     assert body["appliedFilters"]["budgetMax"] == 2000
     assert body["meta"] == {"zipsScored": 3, "matched": 2}
+    sent = server.calls[0]
+    assert sent["budget_max"] == 2000 and sent["household"] == "alone" and sent["k"] == 5
+    assert sent["weights"] == {"transit": 2, "walkable": 2, "quiet": 2, "pet_friendly": 2}
 
 
 def test_empty_result_is_200(client, monkeypatch):  # AT-4
@@ -105,12 +124,6 @@ def test_empty_result_is_200(client, monkeypatch):  # AT-4
     response = client.post("/api/py/recommend", json={"budgetMax": 800})
     assert response.status_code == 200
     assert response.json()["results"] == []
-
-
-def test_explain_failure_uses_template_reason(client, monkeypatch):
-    monkeypatch.setattr(mcp_client, "_server_override", fake_server(explain_ok=False))
-    body = client.post("/api/py/recommend", json={"budgetMax": 2200}).json()
-    assert body["results"][0]["reason"].startswith("Coconut Grove ranks #1")
 
 
 def test_chat_matches_map_ranking(client, monkeypatch):  # AT-6 / AT-7
@@ -124,10 +137,33 @@ def test_chat_matches_map_ranking(client, monkeypatch):  # AT-6 / AT-7
     assert [r["zip"] for r in chat["results"]] == [r["zip"] for r in map_body["results"]]
 
 
-def test_zip_details(client, monkeypatch):
+def test_zip_details_in_top_results(client, monkeypatch):
     monkeypatch.setattr(mcp_client, "_server_override", fake_server())
-    body = client.post("/api/py/zip-details", json={"zip": "33133"}).json()
-    assert body["zip"] == "33133" and body["reason"] == "33133 fits you."
+    body = client.post("/api/py/zip-details", json={"zip": "33145", "preferences": {"budgetMax": 2000}}).json()
+    assert body["zip"] == "33145" and body["rank"] == 1 and body["reason"]
+
+
+def test_zip_details_outside_top_results_uses_area_stats(client, monkeypatch):
+    monkeypatch.setattr(mcp_client, "_server_override", fake_server())
+    body = client.post("/api/py/zip-details", json={"zip": "33133", "preferences": {"budgetMax": 2000}}).json()
+    assert body["zip"] == "33133" and body["rank"] == 0 and body["neighborhood"] == "Coconut Grove"
+    keys = [f["key"] for f in body["features"]]
+    assert "quiet" in keys and "pet_friendly" not in keys  # constant scores are dropped
+
+
+def test_zip_details_unknown_zip_is_404(client, monkeypatch):
+    monkeypatch.setattr(mcp_client, "_server_override", fake_server())
+    response = client.post("/api/py/zip-details", json={"zip": "99999", "preferences": {"budgetMax": 2000}})
+    assert response.status_code == 404
+
+
+def test_real_engine_from_src(client):
+    """End to end against the real MCP server in ../src (skipped if its deps are missing)."""
+    pytest.importorskip("jsonschema")
+    response = client.post("/api/py/recommend", json={"budgetMax": 2500, "vibe": 4})
+    assert response.status_code == 200, response.json()
+    results = response.json()["results"]
+    assert 1 <= len(results) <= 5 and [r["rank"] for r in results] == list(range(1, len(results) + 1))
 
 
 @pytest.mark.parametrize(

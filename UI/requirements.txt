@@ -1,5 +1,8 @@
 # Python backend (api/index.py) only. Keep this slim: it is bundled into a Vercel function.
 fastapi>=0.115,<1
 pydantic>=2.7,<3
-mcp>=2.1,<3
+mcp>=2.2,<3
 google-genai>=1.0,<2
+# Needed by the MCP server in ../src, which the backend launches as a subprocess.
+jsonschema>=4
+vaderSentiment>=3.3.2

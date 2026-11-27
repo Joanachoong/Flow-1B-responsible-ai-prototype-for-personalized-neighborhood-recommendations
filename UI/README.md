@@ -9,12 +9,12 @@ Browser (Next.js: Map tab, Chatbot tab, Leaflet map)
 Python backend: api/index.py (FastAPI, deployed as a Vercel Python function)
    │  validates input → mcp_client.call_tool(...)    (contains no scoring logic)
    ▼
-MCP server: NOT BUILT YET. Its URL comes from the MCP_SERVER_URL environment variable.
-   tools: score_zips · get_zip_details · explain_fit
+MCP server: ../src/flow_neighborhoods/mcp_server.py, started by the backend over stdio
+   tools used: recommend · area_stats
 ```
 
 - **Frontend (`app/`, `components/`, `lib/`)** holds all of the UI. It turns UI state into a `Preferences` object, calls the backend, and renders the results. It never ranks anything.
-- **Backend (`api/`)** is a thin pass-through to the MCP tools. It validates input with pydantic, applies the 4-second `explain_fit` fallback to template reasons, and maps errors to 400, 503 or 500.
+- **Backend (`api/`)** is a thin pass-through to the MCP tools. It validates input with pydantic, renames fields between the UI contract and the engine's ([api/_lib/engine_adapter.py](api/_lib/engine_adapter.py)), builds each reason sentence from the engine's values, and maps errors to 400, 404, 503 or 500.
 - **The map is drawn in the frontend.** ZIP boundaries are a static file, [public/geo/miami-zctas.geojson](public/geo/miami-zctas.geojson), so they show before any API call (MAP-1). The backend returns only data (zip, score, centroid, features, reason), and the map joins it to the polygons by zip.
 - **Shared contract:** [lib/types.ts](lib/types.ts) mirrors [api/_lib/models.py](api/_lib/models.py). Change them together.
 
@@ -39,7 +39,7 @@ npm run dev:api                     # FastAPI on :8000. next dev proxies /api/py
 npm run dev                         # in a second terminal
 ```
 
-Until `MCP_SERVER_URL` is set, Apply shows "Recommendation engine not connected yet" with a Retry button (AT-5). This is the expected behaviour for now.
+The backend starts the MCP server from `../src` by itself on each call (about 1 s), so set `NEXT_PUBLIC_USE_MOCK=false` in `.env.local` and nothing else is needed. `requirements.txt` includes the server's own dependencies.
 
 ## Environment variables
 
@@ -47,7 +47,9 @@ Until `MCP_SERVER_URL` is set, Apply shows "Recommendation engine not connected 
 |---|---|---|
 | `NEXT_PUBLIC_USE_MOCK` | frontend (public) | `true` uses the sample JSON, `false` calls the backend |
 | `NEXT_PUBLIC_MAP_TILE_URL` | frontend (public, optional) | Basemap tile URL. Defaults to OpenStreetMap, warm-greyed in CSS. CARTO basemaps now require an API key. |
-| `MCP_SERVER_URL` | backend only | Streamable-HTTP URL of the MCP server. Leave it empty for now. |
+| `MCP_SERVER_URL` | backend only | Leave empty to run the `src/` server locally. Set it only to use a remotely deployed copy (Streamable HTTP). |
+| `MCP_PYTHON` | backend only | Optional. Python used to start the `src/` server; defaults to the backend's own. |
+| `FLOW_DATA_DIR` | backend only | Optional. Data folder for the server; defaults to the repo's `data/` CSVs. |
 | `MCP_API_KEY` | backend only | Optional bearer token for the MCP server |
 | `GEMINI_API_KEY`, `GEMINI_MODEL` | backend only | Optional. The chat uses Gemini to turn messages into filters; without a key, a rule-based parser is used. |
 
@@ -60,17 +62,26 @@ Never put secrets in `NEXT_PUBLIC_*` variables.
 3. Add the environment variables above. For the first deploy, `NEXT_PUBLIC_USE_MOCK=true` gives a working demo URL straight away.
 4. Point the project at the branch you want to deploy, or merge `joana` into `main`.
 
-## Connecting the real MCP server later
+## How the UI connects to the MCP server
 
-[api/_lib/mcp_client.py](api/_lib/mcp_client.py) is the only file that talks to MCP. To connect a server:
+[api/_lib/mcp_client.py](api/_lib/mcp_client.py) is the only file that talks to MCP. It launches
+`python -m flow_neighborhoods.mcp_server` from the repo root (with `src/` on `PYTHONPATH`) and calls:
 
-1. Run an MCP server with the **Streamable HTTP** transport (on Render or Railway, per the PRD) that exposes these tools:
-   - `score_zips(preferences)` returns `{results: ZipResult[], meta}` or a bare `ZipResult[]`
-   - `get_zip_details(zip, preferences)` returns one `ZipResult`
-   - `explain_fit(zip, preferences, features)` returns a 2–3 sentence string
-2. Set `MCP_SERVER_URL` (and `MCP_API_KEY` if needed) in Vercel, and set `NEXT_PUBLIC_USE_MOCK=false`.
+| UI route | MCP tool | What the UI sends |
+|---|---|---|
+| `/api/py/recommend`, `/api/py/chat` | `recommend` | `budget_max` = budgetMax; `household` = `with_co_leaser` if householdSize ≥ 2; `housing_preference` = `own_apartment`; tags and priorities from the sliders (transit → `transit`, amenities → `walkable`, vibe 1–2 → `quiet`, vibe 4–5 → `social`, pet toggle → `pet_friendly`; slider 1–2 → priority 1, 3–4 → 2, 5 → 3); `k` = min(topN, 5) |
+| `/api/py/zip-details` | `recommend`, then `area_stats` if the ZIP is not in the top results | `zip_code` |
 
-No backend code changes are needed if the tools follow the shapes in [PRD.md](PRD.md). The existing recommender in `src/flow_neighborhoods/` uses a different request shape (tags, k ≤ 5), so the MCP server will need a small adapter.
+The engine's ranking, scores (shown ×100), rents and per-preference contributions are passed
+through unchanged. The engine has no data for **safety, schools, housing type or bedrooms**, so
+those UI settings are not sent, and it returns at most 5 ZIPs.
+
+**Data folder:** the server expects all CSVs in one folder, but the repo keeps them in `data/`,
+`data/cleaned/` and `data/raw/`. The client links them into one temp folder outside the repo and
+passes it as `FLOW_DATA_DIR`. Nothing in `data/` or `src/` is changed.
+
+**Vercel:** with Root Directory = `UI`, the deployment does not include `../src` or `../data`, so
+the local launch is not available there. Deploy the MCP server separately and set `MCP_SERVER_URL`.
 
 > **Data gap for whoever builds the engine:** the PRD's extra filters assume `crime_index`, `school_rating` and housing-type shares. None of these are in `data/cleaned/` yet. What exists: rent by bedroom count (`hud_*`, `zori_latest_rent`), `quiet`, `social`, `pet_friendly`, `walkable`, `transit` and transit stop counts.
 
